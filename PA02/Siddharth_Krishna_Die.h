@@ -6,23 +6,23 @@
 
 class Die {
 private:
-    int sides; // Number of sides on the die
-    int value; // The die's value
+    int sides; // Comment 1: Number of sides on the die
+    int value; // Comment 2: The die's value
 
 public:
-    // Constructor that accepts the number of sides and performs an initial roll
+    // Comment 3: Constructor which is used for initilaize die with number of sides and also does the intiiall roll
     Die(int numSides);
 
-    // Sets the number of sides and performs a roll
+    // Comment 4: Responsible for seting the number of sides and performing a roll
     void setSides(int numSides);
 
-    // Simulates the rolling of the die
+    // Comment 5: Simulates the rolling of the die
     void roll();
 
-    // Returns the number of sides
+    // Comment 6: Its job is to return the number of sides
     int getSides() const;
 
-    // Returns the die's value
+    // Comment 7: It returns the die's value
     int getValue() const;
 };
 
