@@ -1,11 +1,12 @@
 #include <iostream>
+#include <iomanip>
 #include "Siddharth_Krishna_Coin.h"
 
 using namespace std;
 
 // Function prototypes
-void playRound(Coin &quarter, Coin &dime, Coin &nickel, double &playerBalance, double &computerBalance);
-void displayResults(double playerBalance, double computerBalance);
+void playRound(Coin &quarter, Coin &dime, Coin &nickel, double &playerBalance, double &computerBalance, int round);
+void displayResults(double playerBalance, double computerBalance, int round);
 
 int main() {
     // Create Coin objects for quarter, dime, and nickel
@@ -15,35 +16,47 @@ int main() {
     double playerBalance = 0.0;
     double computerBalance = 0.0;
 
-    // Display initial balances
-    cout << "Starting balance - Player: $" << playerBalance << " Computer: $" << computerBalance << endl;
+    // Set precision for all floating-point output
+    cout << fixed << setprecision(2);
 
+    // Display initial balances with a newline for separation
+    cout << "Your starting balance: $" << playerBalance << endl;
+    cout << "The computer's starting balance: $" << computerBalance << endl; // Removed extra newline
+
+    int round = 1;
     // Play rounds until one or both players reach a balance of $1.00 or more
     while (playerBalance < 1.00 && computerBalance < 1.00) {
-        playRound(quarter, dime, nickel, playerBalance, computerBalance);
-        displayResults(playerBalance, computerBalance);
+        playRound(quarter, dime, nickel, playerBalance, computerBalance, round);
+        displayResults(playerBalance, computerBalance, round);
+        round++;
     }
 
     // Determine and display the outcome of the game
+    cout << "\nYour ending balance: $" << playerBalance << endl;
+    cout << "The computer's ending balance: $" << computerBalance << "\n\n"; // Added newline for spacing before result
+
+    // Adjusted game logic based on provided rules
     if (playerBalance >= 1.00 && computerBalance >= 1.00) {
-        if (playerBalance < computerBalance) {
-            cout << "Player wins with a lower balance of $" << playerBalance << " compared to Computer's $" << computerBalance << "!" << endl;
-        } else if (computerBalance < playerBalance) {
-            cout << "Computer wins with a lower balance of $" << computerBalance << " compared to Player's $" << playerBalance << "!" << endl;
+        if (playerBalance == computerBalance) {
+            cout << "Tie! Nobody wins." << endl;
+        } else if (playerBalance < computerBalance) {
+            cout << "Congratulations! You won." << endl;
         } else {
-            cout << "It's a tie with both Player and Computer having $" << playerBalance << "!" << endl;
+            cout << "Sorry! The computer won." << endl;
         }
     } else if (playerBalance >= 1.00) {
-        cout << "Player wins with a balance of $" << playerBalance << "!" << endl;
+        cout << "Congratulations! You won." << endl;
     } else {
-        cout << "Computer wins with a balance of $" << computerBalance << "!" << endl;
+        cout << "Sorry! The computer won." << endl;
     }
+
+    cout << "\nPress any key to continue . . ." << endl;
 
     return 0;
 }
 
 // Function to play a round and update balances
-void playRound(Coin &quarter, Coin &dime, Coin &nickel, double &playerBalance, double &computerBalance) {
+void playRound(Coin &quarter, Coin &dime, Coin &nickel, double &playerBalance, double &computerBalance, int round) {
     // Toss coins for player
     quarter.toss();
     dime.toss();
@@ -64,6 +77,7 @@ void playRound(Coin &quarter, Coin &dime, Coin &nickel, double &playerBalance, d
 }
 
 // Function to display the current results after each round
-void displayResults(double playerBalance, double computerBalance) {
-    cout << "Current balance - Player: $" << playerBalance << " Computer: $" << computerBalance << endl;
+void displayResults(double playerBalance, double computerBalance, int round) {
+    cout << "\nYour balance after round " << round << ": $" << playerBalance << endl;
+    cout << "The computer's balance after round " << round << ": $" << computerBalance << endl;
 }
