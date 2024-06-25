@@ -34,22 +34,16 @@ int main() {
     int birthMonth, birthDay, birthYear;
     int currentMonth, currentDay, currentYear;
 
-    // Get user input for personal information
     getInput(firstName, lastName, birthMonth, birthDay, birthYear);
 
-    // Create HeartRates object
     HeartRates heartRates(firstName, lastName, birthMonth, birthDay, birthYear);
 
-    // Print the user information
     printPersonalInfo(heartRates);
 
-    // Get current date from user
     getCurrentDate(currentMonth, currentDay, currentYear);
 
-    // Calculate age
     int age = heartRates.getAge(currentMonth, currentDay, currentYear);
 
-    // Print heart rate information
     printHeartRateInfo(heartRates, age);
 
     return 0;
