@@ -1,40 +1,32 @@
-// Siddharth_Krishna_200_assign4.cpp
-
 #include "Siddharth_Krishna_HeartRates.h"
 #include <iostream>
 #include <string>
+#include <utility>
 
 void getInput(std::string& firstName, std::string& lastName, int& birthMonth, int& birthDay, int& birthYear) {
-    std::cout << "Enter first name: ";
-    std::cin >> firstName;
-    std::cout << "Enter last name: ";
-    std::cin >> lastName;
-    std::cout << "Enter birth month (1-12): ";
-    std::cin >> birthMonth;
-    std::cout << "Enter birth day (1-31): ";
-    std::cin >> birthDay;
-    std::cout << "Enter birth year: ";
-    std::cin >> birthYear;
+    std::cout << "Please enter first and last name (separated by spaces): " << std::endl;
+    std::cin >> firstName >> lastName;
+    std::cout << "Please enter month, day, and year of birth (separated by spaces): " << std::endl;
+    std::cin >> birthMonth >> birthDay >> birthYear;
 }
 
 void getCurrentDate(int& currentMonth, int& currentDay, int& currentYear) {
-    std::cout << "Enter current month (1-12): ";
-    std::cin >> currentMonth;
-    std::cout << "Enter current day (1-31): ";
-    std::cin >> currentDay;
-    std::cout << "Enter current year: ";
-    std::cin >> currentYear;
+    std::cout << "Please enter today's month, day, and year: " << std::endl;
+    std::cin >> currentMonth >> currentDay >> currentYear;
 }
 
-void printHeartRateInfo(const HeartRates& heartRates, int age) {
+void printPersonalInfo(const HeartRates& heartRates) {
     std::cout << "First Name: " << heartRates.getFirstName() << std::endl;
     std::cout << "Last Name: " << heartRates.getLastName() << std::endl;
     std::cout << "Date of Birth: " << heartRates.getBirthMonth() << "/"
               << heartRates.getBirthDay() << "/" << heartRates.getBirthYear() << std::endl;
-    std::cout << "Age: " << age << " years" << std::endl;
-    std::cout << "Maximum Heart Rate: " << heartRates.getMaximumHeartRate(age) << " beats per minute" << std::endl;
-    auto targetHeartRate = heartRates.getTargetHeartRate(age);
-    std::cout << "Target Heart Rate Range: " << targetHeartRate.first << " - " << targetHeartRate.second << " beats per minute" << std::endl;
+}
+
+void printHeartRateInfo(const HeartRates& heartRates, int age) {
+    std::cout << "Age: " << age << std::endl;
+    std::cout << "Maximum Heart Rate: " << heartRates.getMaximumHeartRate(age) << std::endl;
+    std::pair<int, int> targetHeartRate = heartRates.getTargetHeartRate(age);
+    std::cout << "Target Heart Rate: " << targetHeartRate.first << "-" << targetHeartRate.second << std::endl;
 }
 
 int main() {
@@ -47,6 +39,9 @@ int main() {
 
     // Create HeartRates object
     HeartRates heartRates(firstName, lastName, birthMonth, birthDay, birthYear);
+
+    // Print the user information
+    printPersonalInfo(heartRates);
 
     // Get current date from user
     getCurrentDate(currentMonth, currentDay, currentYear);
