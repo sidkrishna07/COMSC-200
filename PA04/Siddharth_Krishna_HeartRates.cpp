@@ -1,3 +1,6 @@
+// Comment 22: This file has the member functions of the HeartRates class, including the constructor, setters and getters for personal data, and functions to calculate age, maximum heart rate, and target heart rate range.
+
+
 #include "Siddharth_Krishna_HeartRates.h"
 #include <iostream>
 #include <utility>

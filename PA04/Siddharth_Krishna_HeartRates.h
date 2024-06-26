@@ -1,4 +1,4 @@
-
+// Comment 21: This  file defines the HeartRates class which is responsible for manging personal data and calculates heart rate information.
 #ifndef SIDHARTH_KRISHNA_HEARTRATES_H
 #define SIDHARTH_KRISHNA_HEARTRATES_H
 
