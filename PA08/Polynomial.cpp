@@ -2,13 +2,13 @@
 #include <algorithm>
 #include <iostream>
 
-// Constructor
+// Comment 2: This is a constructor that initializes an empty polynomial object.
 Polynomial::Polynomial() {}
 
-// Destructor
+// Comment 3: This is a destructor that cleans up the polynomial object.
 Polynomial::~Polynomial() {}
 
-// Add term to the polynomial
+// Comment 4: This adds a term to the polynomial if the coefficient is not zero and then combines like terms.
 void Polynomial::addTerm(int coefficient, int exponent) {
     if (coefficient != 0) {
         terms.push_back(Term(coefficient, exponent));
@@ -16,12 +16,14 @@ void Polynomial::addTerm(int coefficient, int exponent) {
     }
 }
 
-// Combine like terms in the polynomial
+// Comment 5: This is responsible for combining like terms by adding coefficients of terms with the same exponent.
 void Polynomial::combineLikeTerms() {
+    // Sorts the terms in descending order by exponent.
     std::sort(terms.begin(), terms.end(), [](const Term& a, const Term& b) {
         return a.exponent > b.exponent;
     });
 
+    // Comment6: This combines terms with the same exponent.
     std::vector<Term> combined;
     for (size_t i = 0; i < terms.size(); ++i) {
         if (combined.empty() || combined.back().exponent != terms[i].exponent) {
@@ -33,7 +35,7 @@ void Polynomial::combineLikeTerms() {
     terms = combined;
 }
 
-// Operator +
+// Comment 7: This overloads the + operator to add two polynomials and return the result.
 Polynomial Polynomial::operator+(const Polynomial& other) const {
     Polynomial result = *this;
     for (const Term& term : other.terms) {
@@ -42,7 +44,7 @@ Polynomial Polynomial::operator+(const Polynomial& other) const {
     return result;
 }
 
-// Operator -
+// Comment 8: This overloads the - operator to subtract one polynomial from another and return the result.
 Polynomial Polynomial::operator-(const Polynomial& other) const {
     Polynomial result = *this;
     for (const Term& term : other.terms) {
@@ -51,19 +53,19 @@ Polynomial Polynomial::operator-(const Polynomial& other) const {
     return result;
 }
 
-// Operator +=
+// Comment 9: This overloads the += operator to add another polynomial to this polynomial.
 Polynomial& Polynomial::operator+=(const Polynomial& other) {
     *this = *this + other;
     return *this;
 }
 
-// Operator -=
+// Comment 10: This overloads the -= operator to subtract another polynomial from this polynomial.
 Polynomial& Polynomial::operator-=(const Polynomial& other) {
     *this = *this - other;
     return *this;
 }
 
-// Operator =
+// Comment 11: This overloads the = operator to assign one polynomial to another.
 Polynomial& Polynomial::operator=(const Polynomial& other) {
     if (this != &other) {
         terms = other.terms;
@@ -71,7 +73,7 @@ Polynomial& Polynomial::operator=(const Polynomial& other) {
     return *this;
 }
 
-// Enter terms into the polynomial
+// Comment 12: This prompts tuser to enter terms for the polynomial and adds them.
 void Polynomial::enterTerms() {
     int numTerms;
     std::cout << "Enter number of polynomial terms: ";
@@ -84,10 +86,10 @@ void Polynomial::enterTerms() {
         std::cin >> exponent;
         addTerm(coefficient, exponent);
     }
-    std::cout << std::endl;  // Add extra newline here
+    std::cout << std::endl;
 }
 
-// Print the polynomial
+// Comment 13: This prints the polynomial
 void Polynomial::printPolynomial() const {
     if (terms.empty()) {
         std::cout << "0";
@@ -95,7 +97,7 @@ void Polynomial::printPolynomial() const {
     }
 
     bool first = true;
-    // Print constant term first if it exists
+    
     for (const auto& term : terms) {
         if (term.exponent == 0) {
             std::cout << term.coefficient;
@@ -104,7 +106,7 @@ void Polynomial::printPolynomial() const {
         }
     }
 
-    // Print the rest of the terms
+    
     for (const auto& term : terms) {
         if (term.exponent != 0 && term.coefficient != 0) {
             if (term.coefficient > 0 && !first) {
@@ -122,7 +124,7 @@ void Polynomial::printPolynomial() const {
     std::cout << std::endl;
 }
 
-// Overload << operator for output
+//Comment 14: This overloads the << operator to print the polynomial to an output stream.
 std::ostream& operator<<(std::ostream& os, const Polynomial& poly) {
     if (poly.terms.empty()) {
         os << "0";
@@ -130,7 +132,7 @@ std::ostream& operator<<(std::ostream& os, const Polynomial& poly) {
     }
 
     bool first = true;
-    // Print constant term first if it exists
+    
     for (const auto& term : poly.terms) {
         if (term.exponent == 0) {
             os << term.coefficient;
@@ -139,7 +141,7 @@ std::ostream& operator<<(std::ostream& os, const Polynomial& poly) {
         }
     }
 
-    // Print the rest of the terms
+    // Comment 15: This is responsible for printing rest of terms.
     for (const auto& term : poly.terms) {
         if (term.exponent != 0 && term.coefficient != 0) {
             if (term.coefficient > 0 && !first) {

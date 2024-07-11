@@ -1,3 +1,5 @@
+//Comment 1: This code defines a Polynomial class which represents a polynomial and provides various operations on polynomials such as addition, subtraction, and printing.
+
 #ifndef POLYNOMIAL_H
 #define POLYNOMIAL_H
 
