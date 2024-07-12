@@ -1,12 +1,12 @@
 #include "CheckingAccount.h"
 
+//Comment 21: This file contains the implementation of the CheckingAccount class
 CheckingAccount::CheckingAccount(double balance, double fee)
     : Account(balance), fee(fee) {}
 
 void CheckingAccount::chargeFee() {
     debit(fee);
 }
-
 std::ostream& operator<<(std::ostream& os, const CheckingAccount& account) {
     os << account.getBalance();
     return os;

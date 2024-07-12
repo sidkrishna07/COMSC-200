@@ -7,9 +7,9 @@ using namespace std;
 
 int main()
 {
-   Account account1( 500.0 ); // create Account object
-   SavingsAccount account2( 200.0, .06 ); // create SavingsAccount object
-   CheckingAccount account3( 350.0, 1.25 ); // create CheckingAccount object
+   Account account1( 800.0 ); // create Account object
+   SavingsAccount account2( 300.0, .06 ); // create SavingsAccount object
+   CheckingAccount account3( 700.0, 2.0 ); // create CheckingAccount object
 
    cout << fixed << setprecision( 2 );
 
@@ -18,24 +18,24 @@ int main()
    cout << "account2 balance: $" << account2.getBalance() << endl;
    cout << "account3 balance: $" << account3.getBalance() << endl;
 
-   cout << "\nAttempting to debit $25.00 from account1." << endl;
-   account1.debit( 300.0 ); // try to debit $25.00 from account1
-   cout << "\nAttempting to debit $30.00 from account2." << endl;
-   account2.debit( 100.0 ); // try to debit $30.00 from account2
-   cout << "\nAttempting to debit $40.00 from account3." << endl;
-   account3.debit( 250.0 ); // try to debit $40.00 from account3
+   cout << "\nAttempting to debit $45.00 from account1." << endl;
+   account1.debit( 45.0 );
+   cout << "\nAttempting to debit $35.00 from account2." << endl;
+   account2.debit( 35.0 );
+   cout << "\nAttempting to debit $70.00 from account3." << endl;
+   account3.debit( 70.0 );
 
    // display balances
    cout << "\naccount1 balance: $" << account1.getBalance() << endl;
    cout << "account2 balance: $" << account2.getBalance() << endl;
    cout << "account3 balance: $" << account3.getBalance() << endl;
 
-   cout << "\nCrediting $40.00 to account1." << endl;
-   account1.credit( 250.0 ); // credit $40.00 to account1
-   cout << "\nCrediting $65.00 to account2." << endl;
-   account2.credit( 150.0 ); // credit $65.00 to account2
-   cout << "\nCrediting $20.00 to account3." << endl;
-   account3.credit( 200.0 ); // credit $20.00 to account3
+   cout << "\nCrediting $55.00 to account1." << endl;
+   account1.credit( 55.0 ); 
+   cout << "\nCrediting $50.00 to account2." << endl;
+   account2.credit( 50.0 ); 
+   cout << "\nCrediting $40.00 to account3." << endl;
+   account3.credit( 40.0 ); 
 
    // display balances
    cout << "\naccount1 balance: $" << account1.getBalance() << endl;
@@ -51,5 +51,4 @@ int main()
    cout << "\nNew account2 balance: $" << account2.getBalance() << endl;
 
    return 0;
-   
 }

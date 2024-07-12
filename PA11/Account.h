@@ -1,4 +1,4 @@
-// Comment 1: This file is responsible for defining the Account class that represents a bank account and has methods for managing the account balance.
+// Comment 1: This file contains the class definition for the Account class. 
 #ifndef ACCOUNT_H
 #define ACCOUNT_H
 
@@ -11,7 +11,7 @@ public:
     void debit(double amount);
     double getBalance() const;
 
-    // Overloaded operators
+    
     friend std::ostream& operator<<(std::ostream& os, const Account& account);
     Account& operator+=(double amount);
     Account& operator-=(double amount);

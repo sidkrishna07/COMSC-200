@@ -3,6 +3,7 @@
 
 #include "Account.h"
 
+//Comment 11: This file has the class definition for the SavingsAccount class
 class SavingsAccount : public Account {
 public:
     SavingsAccount(double balance = 0.0, double interestRate = 0.0);

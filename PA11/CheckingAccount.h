@@ -3,6 +3,7 @@
 
 #include "Account.h"
 
+//Comment 20: This file has the class definition for the CheckingAccount class
 class CheckingAccount : public Account {
 public:
     CheckingAccount(double balance = 0.0, double fee = 0.0);
